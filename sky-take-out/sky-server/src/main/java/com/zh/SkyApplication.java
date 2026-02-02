@@ -13,7 +13,7 @@ import org.springframework.util.DigestUtils;
  *
  */
 @SpringBootApplication
-@EnableTransactionManagement
+@EnableTransactionManagement  //开启注解方式的事务管理
 @Slf4j
 @EnableCaching
 @EnableScheduling
