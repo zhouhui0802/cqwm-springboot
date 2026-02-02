@@ -370,12 +370,12 @@ public class OrderServiceImpl implements OrderService {
 
     /**
      * 接单
-     * @param ordersCancelDTO
+     * @param ordersConfirmDTO
      */
     @Override
-    public void confirm(OrdersCancelDTO ordersCancelDTO) {
+    public void confirm(OrdersConfirmDTO ordersConfirmDTO) {
         Orders orders = Orders.builder()
-                .id(ordersCancelDTO.getId())
+                .id(ordersConfirmDTO.getId())
                 .status(Orders.CONFIRMED)
                 .build();
         orderMapper.update(orders);
