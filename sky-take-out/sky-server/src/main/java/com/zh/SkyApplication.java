@@ -16,7 +16,7 @@ import org.springframework.util.DigestUtils;
 @EnableTransactionManagement  //开启注解方式的事务管理
 @Slf4j
 @EnableCaching
-@EnableScheduling
+@EnableScheduling  //开启任务调度
 public class SkyApplication
 {
     public static void main( String[] args )
