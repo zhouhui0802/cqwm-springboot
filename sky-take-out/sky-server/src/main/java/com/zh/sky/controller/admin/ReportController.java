@@ -10,7 +10,10 @@ package com.zh.sky.controller.admin;
 
 import com.zh.sky.result.Result;
 import com.zh.sky.service.ReportService;
+import com.zh.sky.vo.OrderReportVO;
+import com.zh.sky.vo.SalesTop10ReportVO;
 import com.zh.sky.vo.TurnoverReportVO;
+import com.zh.sky.vo.UserReportVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -48,5 +51,50 @@ public class ReportController {
                                                         @DateTimeFormat(pattern = "yyyy-MM-dd")
                                                         LocalDate end) {
        return Result.success(reportService.getTurnover(begin, end));
+    }
+
+    /**
+     * 用户数据统计
+     * @param begin
+     * @param end
+     * @return
+     */
+    @GetMapping("/userStatistics")
+    @ApiOperation("用户数据统计")
+    public Result<UserReportVO> userStatistics(
+            @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate begin,
+            @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate end
+    ){
+        return Result.success(reportService.getUserStatistics(begin, end));
+    }
+
+    /**
+     * 订单数据统计
+     * @param begin
+     * @param end
+     * @return
+     */
+    @GetMapping("/ordersStatistics")
+    @ApiOperation("用户数据统计")
+    public Result<OrderReportVO> orderStatistics(
+            @DateTimeFormat(pattern = "yyyy-MM-dd")
+            LocalDate begin,
+            @DateTimeFormat(pattern = "yyyy-MM-dd")
+            LocalDate end
+    ){
+        return Result.success(reportService.getOrderStatistics(begin, end));
+    }
+
+    /**
+     * 销量排名统计
+     * @param begin
+     * @param end
+     * @return
+     */
+    @GetMapping("/top10")
+    @ApiOperation("销量排名统计")
+    public Result<SalesTop10ReportVO> top10( @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate begin,
+                                             @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate end){
+        return Result.success(reportService.getSalesTop10(begin,end));
     }
 }
